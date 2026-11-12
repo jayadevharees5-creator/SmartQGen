@@ -1,0 +1,41 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Generated question papers
+generated/
+
+# Uploaded documents
+uploads/
+
+# macOS files
+.DS_Store
+
+# IDE and editor files
+.refact/
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build files
+build/
+dist/
+*.egg-info/

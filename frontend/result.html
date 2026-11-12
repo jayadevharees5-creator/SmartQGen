@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Generated Question Paper</title>
+
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        color: #172033;
+    }
+
+
+    .page {
+        width: 92%;
+        max-width: 1100px;
+        margin: 35px auto;
+        background: white;
+        padding: 40px;
+        border-radius: 14px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* ========================================================
+       TOP ACTIONS
+    ======================================================== */
+
+    .top-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+
+    .action-button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+
+    .action-button:hover {
+        opacity: 0.9;
+    }
+
+
+    .back-button {
+        background: #e8ebf0;
+        color: #222;
+    }
+
+
+    .print-button {
+        background: #2820ff;
+        color: white;
+    }
+
+
+    .pdf-button {
+        background: #172033;
+        color: white;
+    }
+
+
+    .pdf-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+
+    /* ========================================================
+       QUESTION PAPER HEADER
+    ======================================================== */
+
+    .header {
+        text-align: center;
+        border-bottom: 2px solid #222;
+        padding-bottom: 25px;
+        margin-bottom: 30px;
+    }
+
+
+    .header h1 {
+        margin: 0;
+        font-size: 25px;
+        text-transform: uppercase;
+    }
+
+
+    .header h2 {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+
+    .exam-info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+
+    /* ========================================================
+       QUESTIONS
+    ======================================================== */
+
+    .question-card {
+        padding: 25px 0;
+        border-bottom: 1px solid #dfe3ea;
+    }
+
+
+    .question-card:last-child {
+        border-bottom: none;
+    }
+
+
+    .question-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+
+    .question-number {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 14px;
+    }
+
+
+    .marks {
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+
+    .badges {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+    }
+
+
+    .badge {
+        padding: 5px 10px;
+        border-radius: 7px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+
+    .type-badge {
+        background: #e3e8ff;
+        color: #283593;
+    }
+
+
+    .difficulty-badge {
+        background: #fff0c9;
+        color: #9a5b00;
+    }
+
+
+    .bloom-badge {
+        background: #f0e1ff;
+        color: #7027b5;
+    }
+
+
+    .question-text {
+        font-size: 17px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+    }
+
+
+    .options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 15px;
+    }
+
+
+    .option {
+        padding: 14px;
+        border: 1px solid #dce1e8;
+        border-radius: 8px;
+        background: #fafbfc;
+        font-size: 16px;
+    }
+
+
+    /* ========================================================
+       ANSWER KEY
+    ======================================================== */
+
+    .answer-box {
+        margin-top: 18px;
+        display: none;
+        padding: 16px;
+        border-radius: 8px;
+        background: #f0f7ff;
+        border: 1px solid #c8ddf5;
+    }
+
+
+    .answer-title {
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+
+    .answer-text {
+        line-height: 1.6;
+    }
+
+
+    .answer-button {
+        margin-top: 18px;
+        padding: 10px 16px;
+        border: 1px solid #2820ff;
+        border-radius: 7px;
+        background: white;
+        color: #2820ff;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+
+    .answer-button:hover {
+        background: #f2f1ff;
+    }
+
+
+    /* ========================================================
+       OTHER
+    ======================================================== */
+
+    .loading {
+        text-align: center;
+        padding: 60px;
+        font-size: 18px;
+    }
+
+
+    .error {
+        text-align: center;
+        padding: 50px;
+        color: #b00020;
+        font-weight: 600;
+    }
+
+
+    .paper-count {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 15px;
+        color: #666;
+    }
+
+
+    /* ========================================================
+       MOBILE
+    ======================================================== */
+
+    @media (max-width: 700px) {
+
+        .page {
+            width: 96%;
+            padding: 20px;
+        }
+
+
+        .options {
+            grid-template-columns: 1fr;
+        }
+
+
+        .exam-info {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+
+        .question-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+
+        .top-actions {
+            justify-content: center;
+        }
+
+    }
+
+
+    /* ========================================================
+       PRINT
+    ======================================================== */
+
+    @media print {
+
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+
+
+        body {
+            background: white;
+        }
+
+
+        .page {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            box-shadow: none;
+            border-radius: 0;
+        }
+
+
+        .top-actions,
+        .answer-button {
+            display: none !important;
+        }
+
+
+        /*
+         * Do not show answer keys in the printed
+         * question paper.
+         */
+
+        .answer-box {
+            display: none !important;
+        }
+
+
+        .question-card {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+
+        .options {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+
+
+        .header {
+            break-after: avoid;
+            page-break-after: avoid;
+        }
+
+    }
+
+</style>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- ========================================================
+         ACTION BUTTONS
+    ========================================================= -->
+
+    <div class="top-actions">
+
+
+        <button
+            class="action-button back-button"
+            onclick="goBackToDashboard()">
+
+            ← Back
+
+        </button>
+
+
+        <button
+            class="action-button print-button"
+            onclick="printQuestionPaper()">
+
+            🖨 Print Question Paper
+
+        </button>
+
+
+        <button
+            id="downloadPdfButton"
+            class="action-button pdf-button"
+            onclick="downloadAsPDF()">
+
+            📄 Download as PDF
+
+        </button>
+
+
+    </div>
+
+
+    <!-- ========================================================
+         QUESTION PAPER HEADER
+    ========================================================= -->
+
+    <div class="header">
+
+
+        <h1 id="institution">
+
+            DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING
+
+        </h1>
+
+
+        <h2 id="examTitle">
+
+            END SEMESTER EXAMINATION
+
+        </h2>
+
+
+        <div class="exam-info">
+
+
+            <span id="timeAllowed">
+
+                Time Allowed: -
+
+            </span>
+
+
+            <span id="maximumMarks">
+
+                Maximum Marks: -
+
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- ========================================================
+         PAPER COUNT
+    ========================================================= -->
+
+    <div
+        id="paperCount"
+        class="paper-count">
+    </div>
+
+
+    <!-- ========================================================
+         QUESTIONS
+    ========================================================= -->
+
+    <div id="questionContainer">
+
+        <div class="loading">
+
+            Loading generated question paper...
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+    // ============================================================
+    // LOAD GENERATED PAPER
+    // ============================================================
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            loadGeneratedPaper();
+
+        }
+    );
+
+
+    // ============================================================
+    // PRINT QUESTION PAPER
+    // ============================================================
+
+    function printQuestionPaper() {
+
+        window.print();
+
+    }
+
+
+    // ============================================================
+    // DOWNLOAD QUESTION PAPER AS PDF
+    // ============================================================
+
+    async function downloadAsPDF() {
+
+        const button =
+            document.getElementById(
+                "downloadPdfButton"
+            );
+
+
+        /*
+         * Get the generated question paper
+         * from browser session storage (questionPaper).
+         */
+
+        const storedPaper =
+            sessionStorage.getItem(
+                "questionPaper"
+            );
+
+
+        if (!storedPaper) {
+
+            alert(
+                "No generated question paper was found. " +
+                "Please generate the question paper again."
+            );
+
+            return;
+        }
+
+
+        let paperData;
+
+
+        try {
+
+            paperData =
+                JSON.parse(
+                    storedPaper
+                );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Invalid paper data:",
+                error
+            );
+
+
+            alert(
+                "The question paper data is invalid."
+            );
+
+
+            return;
+
+        }
+
+
+        /*
+         * Prevent multiple clicks while
+         * the PDF is being generated.
+         */
+
+        button.disabled = true;
+
+
+        button.textContent =
+            "⏳ Generating PDF...";
+
+
+        try {
+
+
+            // ----------------------------------------------------
+            // SEND PAPER DATA TO FLASK
+            // ----------------------------------------------------
+
+            const response =
+                await fetch(
+                    "/save-pdf",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify(
+                                paperData
+                            )
+                    }
+                );
+
+
+            // ----------------------------------------------------
+            // CHECK SERVER RESPONSE
+            // ----------------------------------------------------
+
+            if (!response.ok) {
+
+                let errorMessage =
+                    "PDF generation failed.";
+
+
+                try {
+
+                    const errorData =
+                        await response.json();
+
+
+                    if (errorData.error) {
+
+                        errorMessage =
+                            errorData.error;
+
+                    }
+
+                }
+
+                catch (jsonError) {
+
+                    console.error(
+                        "Unable to read error response:",
+                        jsonError
+                    );
+
+                }
+
+
+                throw new Error(
+                    errorMessage
+                );
+
+            }
+
+
+            // ----------------------------------------------------
+            // RECEIVE PDF FILE
+            // ----------------------------------------------------
+
+            const blob =
+                await response.blob();
+
+
+            if (
+                !blob ||
+                blob.size === 0
+            ) {
+
+                throw new Error(
+                    "The generated PDF is empty."
+                );
+
+            }
+
+
+            // ----------------------------------------------------
+            // CREATE DOWNLOAD URL
+            // ----------------------------------------------------
+
+            const downloadUrl =
+                window.URL.createObjectURL(
+                    blob
+                );
+
+
+            // ----------------------------------------------------
+            // CREATE TEMPORARY DOWNLOAD LINK
+            // ----------------------------------------------------
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.href =
+                downloadUrl;
+
+
+            /*
+             * Browser will download the file
+             * instead of opening the print dialog.
+             */
+
+            link.download =
+                createPDFFileName(
+                    paperData
+                );
+
+
+            document.body.appendChild(
+                link
+            );
+
+
+            link.click();
+
+
+            // ----------------------------------------------------
+            // CLEANUP
+            // ----------------------------------------------------
+
+            link.remove();
+
+
+            window.URL.revokeObjectURL(
+                downloadUrl
+            );
+
+
+            console.log(
+                "PDF downloaded successfully."
+            );
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "PDF download error:",
+                error
+            );
+
+
+            alert(
+                "Unable to download PDF.\n\n" +
+                error.message
+            );
+
+        }
+
+        finally {
+
+            /*
+             * Restore button.
+             */
+
+            button.disabled = false;
+
+
+            button.textContent =
+                "📄 Download as PDF";
+
+        }
+
+    }
+
+
+    // ============================================================
+    // CREATE PDF FILE NAME
+    // ============================================================
+
+    function createPDFFileName(
+        paperData
+    ) {
+
+        const subject =
+            paperData.subject ||
+            paperData.subject_title ||
+            "question_paper";
+
+
+        /*
+         * Remove characters that are not suitable
+         * for a file name.
+         */
+
+        const cleanSubject =
+            String(subject)
+                .trim()
+                .replace(
+                    /[^a-zA-Z0-9]+/g,
+                    "_"
+                )
+                .replace(
+                    /^_+|_+$/g,
+                    ""
+                );
+
+
+        if (!cleanSubject) {
+
+            return "question_paper.pdf";
+
+        }
+
+
+        return (
+            cleanSubject +
+            "_question_paper.pdf"
+        );
+
+    }
+
+
+    // ============================================================
+    // MAIN LOADER
+    // ============================================================
+
+    function loadGeneratedPaper() {
+
+        const storedPaper =
+            sessionStorage.getItem(
+                "questionPaper"
+            );
+
+
+        if (!storedPaper) {
+
+            showError(
+                "No generated question paper was found. " +
+                "Please return to the dashboard and generate again."
+            );
+
+
+            return;
+
+        }
+
+
+        let data;
+
+
+        try {
+
+            data =
+                JSON.parse(
+                    storedPaper
+                );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Invalid generated paper:",
+                error
+            );
+
+
+            showError(
+                "The generated question paper data is invalid."
+            );
+
+
+            return;
+
+        }
+
+
+        console.log(
+            "Generated paper data:",
+            data
+        );
+
+
+        /*
+         * Support all paper formats.
+         */
+
+        let questions = [];
+
+
+        if (
+            Array.isArray(data)
+        ) {
+
+            questions = data;
+
+        }
+
+
+        else if (
+            Array.isArray(data.paper)
+        ) {
+
+            questions = data.paper;
+
+        }
+
+
+        else if (
+            Array.isArray(data.questions)
+        ) {
+
+            questions = data.questions;
+
+        }
+
+
+        console.log(
+            "Questions received:",
+            questions.length
+        );
+
+
+        if (
+            questions.length === 0
+        ) {
+
+            showError(
+                "The generator returned no questions."
+            );
+
+
+            return;
+
+        }
+
+
+        renderPaper(
+            data,
+            questions
+        );
+
+    }
+
+
+    // ============================================================
+    // RENDER COMPLETE PAPER
+    // ============================================================
+
+    function renderPaper(
+        data,
+        questions
+    ) {
+
+        updatePaperHeader(
+            data,
+            questions
+        );
+
+
+        const container =
+            document.getElementById(
+                "questionContainer"
+            );
+
+
+        container.innerHTML = "";
+
+
+        /*
+         * Render ALL questions.
+         */
+
+        questions.forEach(
+            function (
+                question,
+                index
+            ) {
+
+                const card =
+                    createQuestionCard(
+                        question,
+                        index + 1
+                    );
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        document.getElementById(
+            "paperCount"
+        ).textContent =
+            "Total Questions Generated: " +
+            questions.length;
+
+    }
+
+
+    // ============================================================
+    // HEADER
+    // ============================================================
+
+    function updatePaperHeader(
+        data,
+        questions
+    ) {
+
+        const institution =
+            data.institution ||
+            "DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING";
+
+
+        const subject =
+            data.subject_title ||
+            data.subject ||
+            "COMPUTER SCIENCE & CYBER SECURITY";
+
+
+        const time =
+            data.time_allowed ||
+            data.timeAllowed ||
+            "1.5 Hours";
+
+
+        const marks =
+            data.max_marks ||
+            data.maximum_marks ||
+            data.maximumMarks ||
+            "-";
+
+
+        document.getElementById(
+            "institution"
+        ).textContent =
+            institution;
+
+
+        document.getElementById(
+            "examTitle"
+        ).textContent =
+            "END SEMESTER EXAMINATION — " +
+            subject;
+
+
+        document.getElementById(
+            "timeAllowed"
+        ).textContent =
+            "Time Allowed: " +
+            time;
+
+
+        document.getElementById(
+            "maximumMarks"
+        ).textContent =
+            "Maximum Marks: " +
+            marks;
+
+    }
+
+
+    // ============================================================
+    // CREATE QUESTION CARD
+    // ============================================================
+
+    function createQuestionCard(
+        question,
+        number
+    ) {
+
+        const card =
+            document.createElement(
+                "div"
+            );
+
+
+        card.className =
+            "question-card";
+
+
+        const type =
+            normalizeType(
+                question.type ||
+                question.question_type ||
+                question.q_type ||
+                "MCQ"
+            );
+
+
+        const difficulty =
+            question.difficulty ||
+            "Medium";
+
+
+        const bloom =
+            question.bloom_level ||
+            question.bloom ||
+            "Understand";
+
+
+        const questionText =
+            question.question ||
+            "Question text unavailable.";
+
+
+        const answer =
+            question.correct_answer ||
+            question.answer ||
+            "";
+
+
+        const marks =
+            getMarks(
+                type,
+                question
+            );
+
+
+        // --------------------------------------------------------
+        // QUESTION HEADER
+        // --------------------------------------------------------
+
+        const header =
+            document.createElement(
+                "div"
+            );
+
+
+        header.className =
+            "question-header";
+
+
+        const left =
+            document.createElement(
+                "div"
+            );
+
+
+        const badges =
+            document.createElement(
+                "div"
+            );
+
+
+        badges.className =
+            "badges";
+
+
+        const typeBadge =
+            document.createElement(
+                "span"
+            );
+
+
+        typeBadge.className =
+            "badge type-badge";
+
+
+        typeBadge.textContent =
+            displayType(
+                type
+            );
+
+
+        const difficultyBadge =
+            document.createElement(
+                "span"
+            );
+
+
+        difficultyBadge.className =
+            "badge difficulty-badge";
+
+
+        difficultyBadge.textContent =
+            difficulty;
+
+
+        const bloomBadge =
+            document.createElement(
+                "span"
+            );
+
+
+        bloomBadge.className =
+            "badge bloom-badge";
+
+
+        bloomBadge.textContent =
+            bloom;
+
+
+        badges.appendChild(
+            typeBadge
+        );
+
+
+        badges.appendChild(
+            difficultyBadge
+        );
+
+
+        badges.appendChild(
+            bloomBadge
+        );
+
+
+        const numberElement =
+            document.createElement(
+                "div"
+            );
+
+
+        numberElement.className =
+            "question-number";
+
+
+        numberElement.textContent =
+            "Q" +
+            number +
+            ". " +
+            questionText;
+
+
+        left.appendChild(
+            badges
+        );
+
+
+        left.appendChild(
+            numberElement
+        );
+
+
+        const marksElement =
+            document.createElement(
+                "div"
+            );
+
+
+        marksElement.className =
+            "marks";
+
+
+        marksElement.textContent =
+            "[" +
+            marks +
+            " Marks]";
+
+
+        header.appendChild(
+            left
+        );
+
+
+        header.appendChild(
+            marksElement
+        );
+
+
+        card.appendChild(
+            header
+        );
+
+
+        // --------------------------------------------------------
+        // MCQ OPTIONS
+        // --------------------------------------------------------
+
+        if (
+            type === "MCQ" &&
+            Array.isArray(
+                question.options
+            )
+        ) {
+
+            const options =
+                document.createElement(
+                    "div"
+                );
+
+
+            options.className =
+                "options";
+
+
+            question.options.forEach(
+                function (
+                    option,
+                    optionIndex
+                ) {
+
+                    const optionElement =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    optionElement.className =
+                        "option";
+
+
+                    const labels =
+                        [
+                            "A",
+                            "B",
+                            "C",
+                            "D"
+                        ];
+
+
+                    optionElement.textContent =
+                        "(" +
+                        labels[optionIndex] +
+                        ") " +
+                        option;
+
+
+                    options.appendChild(
+                        optionElement
+                    );
+
+                }
+            );
+
+
+            card.appendChild(
+                options
+            );
+
+        }
+
+
+        // --------------------------------------------------------
+        // ANSWER
+        // --------------------------------------------------------
+
+        const answerButton =
+            document.createElement(
+                "button"
+            );
+
+
+        answerButton.className =
+            "answer-button";
+
+
+        answerButton.textContent =
+            "🔑 Show Answer Key";
+
+
+        const answerBox =
+            document.createElement(
+                "div"
+            );
+
+
+        answerBox.className =
+            "answer-box";
+
+
+        const answerTitle =
+            document.createElement(
+                "div"
+            );
+
+
+        answerTitle.className =
+            "answer-title";
+
+
+        answerTitle.textContent =
+            "Correct Answer";
+
+
+        const answerText =
+            document.createElement(
+                "div"
+            );
+
+
+        answerText.className =
+            "answer-text";
+
+
+        answerText.textContent =
+            answer;
+
+
+        answerBox.appendChild(
+            answerTitle
+        );
+
+
+        answerBox.appendChild(
+            answerText
+        );
+
+
+        answerButton.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    answerBox.style.display ===
+                    "block"
+                ) {
+
+                    answerBox.style.display =
+                        "none";
+
+
+                    answerButton.textContent =
+                        "🔑 Show Answer Key";
+
+                }
+
+                else {
+
+                    answerBox.style.display =
+                        "block";
+
+
+                    answerButton.textContent =
+                        "🔒 Hide Answer Key";
+
+                }
+
+            }
+        );
+
+
+        card.appendChild(
+            answerButton
+        );
+
+
+        card.appendChild(
+            answerBox
+        );
+
+
+        return card;
+
+    }
+
+
+    // ============================================================
+    // TYPE NORMALIZATION
+    // ============================================================
+
+    function normalizeType(
+        type
+    ) {
+
+        const value =
+            String(type || "")
+                .trim()
+                .toUpperCase()
+                .replace(
+                    /-/g,
+                    "_"
+                );
+
+
+        if (
+            value === "FILL" ||
+            value === "FILL_BLANK" ||
+            value === "FILL_IN_THE_BLANK" ||
+            value === "FILL_IN_THE_BLANKS"
+        ) {
+
+            return "FILL_IN_THE_BLANKS";
+
+        }
+
+
+        if (
+            value === "TRUE/FALSE" ||
+            value === "TRUE_FALSE"
+        ) {
+
+            return "TRUE_FALSE";
+
+        }
+
+
+        if (
+            value === "SHORT" ||
+            value === "SHORT ANSWER" ||
+            value === "SHORT_ANSWER"
+        ) {
+
+            return "SHORT_ANSWER";
+
+        }
+
+
+        if (
+            value === "LONG" ||
+            value === "LONG ANSWER" ||
+            value === "LONG_ANSWER"
+        ) {
+
+            return "LONG_ANSWER";
+
+        }
+
+
+        return "MCQ";
+
+    }
+
+
+    // ============================================================
+    // DISPLAY TYPE
+    // ============================================================
+
+    function displayType(
+        type
+    ) {
+
+        if (
+            type === "FILL_IN_THE_BLANKS"
+        ) {
+
+            return "Fill in the Blanks";
+
+        }
+
+
+        if (
+            type === "TRUE_FALSE"
+        ) {
+
+            return "True/False";
+
+        }
+
+
+        if (
+            type === "SHORT_ANSWER"
+        ) {
+
+            return "Short Answer";
+
+        }
+
+
+        if (
+            type === "LONG_ANSWER"
+        ) {
+
+            return "Long Answer";
+
+        }
+
+
+        return "MCQ";
+
+    }
+
+
+    // ============================================================
+    // MARKS
+    // ============================================================
+
+    function getMarks(
+        type,
+        question
+    ) {
+
+        if (
+            question.marks
+        ) {
+
+            return question.marks;
+
+        }
+
+
+        if (
+            type === "LONG_ANSWER"
+        ) {
+
+            return 10;
+
+        }
+
+
+        if (
+            type === "SHORT_ANSWER"
+        ) {
+
+            return 5;
+
+        }
+
+
+        return 1;
+
+    }
+
+
+    // ============================================================
+    // ERROR
+    // ============================================================
+
+    function showError(
+        message
+    ) {
+
+        document.getElementById(
+            "questionContainer"
+        ).innerHTML =
+            '<div class="error">' +
+            message +
+            '</div>';
+
+    }
+
+
+    // ============================================================
+    // BACK TO DASHBOARD
+    // ============================================================
+
+    function goBackToDashboard() {
+
+        window.location.href =
+            "/dashboard";
+
+    }
+
+
+</script>
+
+
+</body>
+
+</html>

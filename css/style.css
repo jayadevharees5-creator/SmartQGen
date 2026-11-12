@@ -1,0 +1,401 @@
+Today 11:50 AM
+where to get free one
+Pasted code(1).js
+JavaScript
+Pasted code(1).html
+File
+any change in this
+Pasted code(2).js
+JavaScript
+
+give the updated main.js
+i want the login page this theme
+still like this
+give the correct code to change
+Pasted code(20261002-090047).py
+Python
+give the updated one
+i dont want likw this
+i want in this theme
+Pasted text(20261002-091420).txt
+Document
+Pasted text(20261002-092714).txt
+Document
+in dashboard i dont want to change anything i want the samw one tha is pasted above
+where to go
+jayadevharees5_db_user
+next wher to go
+Pasted code(3).html
+File
+Pasted code (2).css
+File
+Pasted code (3).js
+JavaScript
+
+Yes — you are right. Your old result.html is around 1,300+ lines, and I should not have replaced it with a much smaller file without preserving its existing functionality.
+
+Your old result page already contains a lot of important logic for:
+
+displaying the generated questions
+MCQ options
+question type
+difficulty
+Bloom's level
+marks
+answers
+source information
+question numbering
+Print
+Download PDF
+loading data from sessionStorage
+handling different question-paper response formats
+error handling
+responsive layout
+
+So we should modify your existing 1,300-line result.html, not throw it away.
+
+What I recommend
+
+Keep your original:
+
+frontend/result.html
+
+and make only the visual changes needed so that it matches your dashboard.
+
+The structure should remain:
+
+OLD result.html
+      │
+      ├── Existing question rendering
+      ├── Existing generated-question display
+      ├── Existing MCQ handling
+      ├── Existing answer handling
+      ├── Existing PDF download
+      ├── Existing print
+      └── Existing error handling
+                │
+                ▼
+        CHANGE ONLY UI/CSS
+                │
+                ▼
+      Dashboard-style Result Page
+
+And importantly:
+
+The generated questions will still be displayed exactly from your backend output.
+
+I can use the uploaded 1,300-line result.html as the source and give you a corrected full replacement that preserves its functionality while changing the appearance.
+
+If you want the safest approach, we should change only:
+
+frontend/result.html  → preserve functionality, update UI
+static/css/style.css  → add/update result styling
+static/js/main.js     → preserve existing generation logic + loading page
+
+and do not touch:
+
+frontend/dashboard.html
+app.py
+question_generator.py
+question_paper_generator.py
+retriever.py
+chunker.py
+document_processor.py
+structure_detector.py
+
+This is the better approach for your project.
+
+so if use the code that doestnt chaneg the old ui  iwant to just change the theme and add loading that only
+
+Exactly. Do not replace your 1,300-line result.html.
+
+We should do only these two changes:
+
+1. Keep your old result.html completely
+
+Your existing code that displays the generated questions stays unchanged:
+
+Question generation display
+MCQs/options
+Answers
+Difficulty
+Bloom level
+Marks
+Print
+Download PDF
+Question numbering
+Existing JavaScript logic
+2. Change only the theme
+
+We modify the CSS so the result page uses the same visual theme as your dashboard:
+
+Dashboard theme
+├── Light gray background
+├── White cards
+├── Indigo / violet primary color
+├── Rounded corners
+├── Soft shadows
+├── Clean typography
+└── Same buttons/navbar style
+3. Add the generation loading screen
+
+When the user clicks Generate Question Paper:
+
+Dashboard
+    ↓
+[ Generate Question Paper ]
+    ↓
+┌─────────────────────────────────┐
+│           Smart Q Gen            │
+│                                  │
+│       Generating Question Paper  │
+│                                  │
+│          ◌ Loading...            │
+│                                  │
+│ Uploading document...            │
+│ ████████░░░░░░░░░░░░ 35%        │
+└─────────────────────────────────┘
+    ↓
+Backend finishes
+    ↓
+Existing result.html
+    ↓
+Generated questions displayed
+
+The loading messages can change automatically:
+
+Uploading document...
+Reading document...
+Extracting content...
+Detecting document structure...
+Building knowledge chunks...
+Searching relevant content...
+Generating questions...
+Validating questions...
+Preparing question paper...
+Files to modify
+frontend/result.html     → NO structural/functionality change
+static/css/style.css     → THEME changes + loading CSS
+static/js/main.js        → LOADING overlay only
+
+Dashboard HTML stays exactly as it is.
+
+And most importantly, your existing 1,300-line result page remains the page that displays the generated questions. We only make it visually match the dashboard and add the loading experience.
+
+give the updated files
+
+Yes. I updated the files without removing your old result-page functionality.
+
+Updated files
+
+result.html — your original ~1,600-line structure and question-display JavaScript are preserved; only the dashboard theme stylesheet was added.
+
+Download updated result.html
+
+style.css — your existing CSS is preserved, with the new Smart Q Gen theme overrides and loading-screen CSS added.
+
+Download updated style.css
+
+main.js — your existing login, registration, generation, sessionStorage, and backend logic is preserved. I added only the generation loading overlay.
+
+Download updated main.js
+
+What changed
+
+Dashboard: unchanged.
+
+Result page:
+Your existing generated questions still display through the original:
+
+questionContainer
+     ↓
+Generated questions
+     ↓
+MCQ options / answers / marks / difficulty / Bloom's
+
+During generation:
+
+Generate Question Paper
+        ↓
+┌──────────────────────────────┐
+│           QG                 │
+│                              │
+│ Generating Question Paper    │
+│                              │
+│ Generating questions with AI │
+│ ███████████░░░░░░░ 76%       │
+└──────────────────────────────┘
+        ↓
+/result
+        ↓
+Your actual generated questions
+
+The loading messages progress through document upload, extraction, structure detection, chunking, retrieval, generation, validation, and preparation.
+
+Important: Replace the files at these exact locations:
+
+frontend/result.html
+static/css/style.css
+static/js/main.js
+
+Do not replace dashboard.html.
+
+result_updated.html
+HTML
+style_updated.css
+Code
+main_updated.js
+Code
+
+Library
+/
+Jd
+/
+style_updated.css
+9999
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+/* =========================================================
+   SMART Q GEN
+   Global Light Theme
+   ========================================================= */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+
+
+
+
+/* =========================================================
+   ROOT VARIABLES
+   ========================================================= */
+
+
+:root {
+
+
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --primary-light: #eef2ff;
+
+
+    --secondary: #6366f1;
+
+
+    --background: #f7f9fc;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+
+
+    --border: #e2e8f0;
+    --border-focus: #6366f1;
+
+
+    --text-main: #172033;
+    --text-heading: #111827;
+    --text-muted: #64748b;
+    --text-light: #94a3b8;
+
+
+    --success: #059669;
+    --success-bg: #ecfdf5;
+
+
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+
+
+    --warning: #d97706;
+    --warning-bg: #fffbeb;
+
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+
+    --shadow-sm:
+        0 2px 8px rgba(15, 23, 42, 0.04);
+
+
+    --shadow-md:
+        0 10px 30px rgba(15, 23, 42, 0.07);
+
+
+    --shadow-lg:
+        0 20px 50px rgba(15, 23, 42, 0.10);
+
+
+    --transition:
+        all 0.2s ease;
+
+
+    --font-body: 'Inter', sans-serif;
+    --font-heading: 'Outfit', sans-serif;
+}
+
+
+
+
+/* =========================================================

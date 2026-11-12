@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Q Gen - Faculty Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="dashboard-navbar">
+
+        <div class="brand-section">
+            <div class="brand-title">
+                Smart Q Gen
+            </div>
+
+            <div class="brand-subtitle">
+                AI Question Paper Generator
+            </div>
+        </div>
+
+        <div class="navbar-right">
+
+            <div class="faculty-info">
+
+                <div class="faculty-avatar" id="facultyAvatar">
+                    F
+                </div>
+
+                <div class="faculty-details">
+                    <span class="faculty-label">Faculty</span>
+
+                    <strong id="usernameDisplay">
+                        Faculty
+                    </strong>
+                </div>
+
+            </div>
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="dashboard-container">
+
+        <!-- PAGE HEADER -->
+
+        <section class="dashboard-header">
+
+            <div>
+
+                <h1>
+                    Generate Question Paper
+                </h1>
+
+                <p>
+                    Upload your course material and configure
+                    the examination requirements.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             GENERATION CARD
+        ========================= -->
+
+        <section class="generation-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>
+                        Question Paper Configuration
+                    </h2>
+
+                    <p>
+                        Smart Q Gen will analyse the uploaded
+                        document and generate grounded questions.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 GENERATION FORM
+            ========================= -->
+
+            <form
+                id="generateForm"
+                enctype="multipart/form-data">
+
+
+                <!-- SUBJECT -->
+
+                <div class="form-section">
+
+                    <label for="subject_title">
+                        Subject / Course Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject_title"
+                        name="subject"
+                        class="dashboard-input"
+                        placeholder="Enter subject or course name"
+                        value="Computer Science & Cyber Security"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DOCUMENT -->
+
+                <div class="form-section">
+
+                    <label>
+                        Course Material
+                    </label>
+
+                    <label
+                        for="pdf_file"
+                        class="document-upload">
+
+                        <div class="upload-icon">
+                            ↑
+                        </div>
+
+                        <div class="upload-content">
+
+                            <strong>
+                                Upload course material
+                            </strong>
+
+                            <span id="file-name-display">
+                                PDF, DOCX or TXT
+                            </span>
+
+                        </div>
+
+                        <div class="upload-action">
+                            Choose File
+                        </div>
+
+                        <input
+                            type="file"
+                            id="pdf_file"
+                            name="file"
+                            accept=".pdf,.docx,.txt"
+                            required
+                        >
+
+                    </label>
+
+                </div>
+
+
+                <!-- =========================
+                     SETTINGS
+                ========================= -->
+
+                <div class="settings-grid">
+
+
+                    <!-- INSTITUTION -->
+
+                    <div class="form-section">
+
+                        <label for="institution">
+                            Department / Institution
+                        </label>
+
+                        <input
+                            type="text"
+                            id="institution"
+                            name="institution"
+                            class="dashboard-input"
+                            placeholder="Enter department or institution"
+                            value="DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING"
+                        >
+
+                    </div>
+
+
+                    <!-- MAX MARKS -->
+
+                    <div class="form-section">
+
+                        <label for="max_marks">
+                            Maximum Marks
+                        </label>
+
+                        <input
+                            type="number"
+                            id="max_marks"
+                            name="max_marks"
+                            class="dashboard-input"
+                            value="50"
+                            min="1"
+                        >
+
+                    </div>
+
+
+                    <!-- TIME -->
+
+                    <div class="form-section">
+
+                        <label for="time_allowed">
+                            Time Allowed
+                        </label>
+
+                        <input
+                            type="text"
+                            id="time_allowed"
+                            name="time_allowed"
+                            class="dashboard-input"
+                            placeholder="Example: 1.5 Hours"
+                            value="1.5 Hours"
+                        >
+
+                    </div>
+
+
+                    <!-- NUMBER OF QUESTIONS -->
+
+                    <div class="form-section">
+
+                        <label for="num_questions">
+                            Number of Questions
+                        </label>
+
+                        <select
+                            id="num_questions"
+                            name="num_questions"
+                            class="dashboard-input">
+
+                            <option value="5">
+                                5 Questions
+                            </option>
+
+                            <option value="10" selected>
+                                10 Questions
+                            </option>
+
+                            <option value="15">
+                                15 Questions
+                            </option>
+
+                            <option value="20">
+                                20 Questions
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- QUESTION TYPE -->
+
+                    <div class="form-section">
+
+                        <label for="question_type">
+                            Question Format
+                        </label>
+
+                        <select
+                            id="question_type"
+                            name="question_type"
+                            class="dashboard-input">
+
+                            <option value="All">
+                                All Types
+                            </option>
+
+                            <option value="MCQ">
+                                Multiple Choice
+                            </option>
+
+                            <option value="Short Answer">
+                                Short Answer
+                            </option>
+
+                            <option value="Long Answer">
+                                Long Answer
+                            </option>
+
+                            <option value="Fill in the Blanks">
+                                Fill in the Blanks
+                            </option>
+
+                            <option value="True/False">
+                                True / False
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- DIFFICULTY -->
+
+                    <div class="form-section">
+
+                        <label for="difficulty">
+                            Difficulty Level
+                        </label>
+
+                        <select
+                            id="difficulty"
+                            name="difficulty"
+                            class="dashboard-input">
+
+                            <option value="Easy">
+                                Easy
+                            </option>
+
+                            <option value="Medium" selected>
+                                Medium
+                            </option>
+
+                            <option value="Hard">
+                                Hard
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- BLOOM LEVEL -->
+
+                    <div class="form-section">
+
+                        <label for="bloom_level">
+                            Bloom's Taxonomy Level
+                        </label>
+
+                        <select
+                            id="bloom_level"
+                            name="bloom_level"
+                            class="dashboard-input">
+
+                            <option value="Remember">
+                                Remember
+                            </option>
+
+                            <option value="Understand" selected>
+                                Understand
+                            </option>
+
+                            <option value="Apply">
+                                Apply
+                            </option>
+
+                            <option value="Analyze">
+                                Analyze
+                            </option>
+
+                            <option value="Evaluate">
+                                Evaluate
+                            </option>
+
+                            <option value="Create">
+                                Create
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     GENERATE BUTTON
+                ========================= -->
+
+                <div class="generate-area">
+
+                    <button
+                        type="submit"
+                        id="generateButton"
+                        class="generate-button">
+
+                        <span>
+                            Generate Question Paper
+                        </span>
+
+                    </button>
+
+                    <p class="generate-note">
+                        Questions will be generated from the
+                        uploaded course material using the
+                        Smart Q Gen retrieval pipeline.
+                    </p>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="dashboard-footer">
+
+        Smart Q Gen &nbsp;•&nbsp;
+        AI-Powered Question Paper Generation System
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>

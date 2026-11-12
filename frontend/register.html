@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Q Gen - Create Account</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="auth-page">
+
+    <div class="login-card">
+
+        <h1>Create Account</h1>
+
+        <p class="login-subtitle">
+            Register to access the Smart Q Gen Faculty Portal
+        </p>
+
+        <!-- Error -->
+        <div id="errorMessage"
+             class="auth-message error-message"
+             role="alert"
+             style="display: none;">
+        </div>
+
+        <!-- Success -->
+        <div id="successMessage"
+             class="auth-message success-message"
+             role="status"
+             style="display: none;">
+        </div>
+
+        <form id="registerForm" autocomplete="on">
+
+            <!-- Faculty Name -->
+            <div class="form-group">
+
+                <label for="name">
+                    Faculty Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
+
+            </div>
+
+            <!-- Username -->
+            <div class="form-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    class="form-control"
+                    placeholder="Create a username"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Create a password"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+                <div class="password-note">
+                    Password must contain at least 6 characters.
+                </div>
+
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    class="form-control"
+                    placeholder="Re-enter your password"
+                    autocomplete="new-password"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+            <!-- Register Button -->
+            <button
+                type="submit"
+                id="registerButton"
+                class="login-button">
+                Create Account
+            </button>
+
+        </form>
+
+        <!-- Login Link -->
+        <div class="register-link">
+
+            Already have an account?
+            <a href="{{ url_for('login_page') }}">
+                Login here
+            </a>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

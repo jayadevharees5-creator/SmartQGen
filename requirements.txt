@@ -1,0 +1,15 @@
+Flask
+gunicorn
+python-dotenv
+pymongo
+PyMuPDF
+python-docx
+reportlab
+numpy
+faiss-cpu
+rank-bm25
+sentence-transformers
+spacy
+torch
+transformers
+sentencepiece

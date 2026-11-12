@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Q Gen - Faculty Login</title>
+
+    <!-- Flask Static CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="auth-page">
+
+    <div class="login-card">
+
+        <!-- Heading -->
+        <h1>Portal Login</h1>
+
+        <p class="login-subtitle">
+            AI-Powered Question Paper Generation System
+        </p>
+
+        <!-- Error Message -->
+        <div id="errorMessage"
+             class="auth-message error-message"
+             role="alert"
+             style="display: none;">
+        </div>
+
+        <!-- Success Message -->
+        <div id="successMessage"
+             class="auth-message success-message"
+             role="status"
+             style="display: none;">
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" autocomplete="on">
+
+            <!-- Username -->
+            <div class="form-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    class="form-control"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                    required
+                >
+
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+            <!-- Login Button -->
+            <button
+                type="submit"
+                id="loginButton"
+                class="login-button"
+            >
+                Login to System
+            </button>
+
+        </form>
+
+        <!-- Register -->
+        <div class="register-link">
+
+            <span>Need an account?</span>
+
+            <a href="{{ url_for('register_page') }}">
+                Register
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Flask Static JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

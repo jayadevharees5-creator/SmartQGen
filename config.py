@@ -1,0 +1,4 @@
+CHUNK_SIZE_WORDS = 500
+CHUNK_OVERLAP_WORDS = 50
+
+QG_MODEL_NAME = "google/flan-t5-large"
